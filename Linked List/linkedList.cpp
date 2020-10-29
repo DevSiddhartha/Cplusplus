@@ -234,8 +234,14 @@ ListNode* merge(ListNode* a, ListNode* b) {
 
 // Submit this on leetcode 148 (Sort List)
 ListNode* mergeSort(ListNode* head) {
-	// HOMEWORK
-	return NULL;
+	//Base Case
+	if(head->next == NULL){
+		return head;
+	}
+	ListNode* subProblemHead = mergeSort(head->next);
+	head->next = NULL;
+	ListNode* newHead = merge(subProblemHead,head);
+	return newHead;	
 }
 
 // try submitting on leetcode 25 (slightly different)
